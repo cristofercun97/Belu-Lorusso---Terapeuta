@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#F5F1EB] font-sans text-[#1E1E1E] antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#6B7D3A] hover:bg-[#4E5B2A] text-white font-medium px-6 py-3 rounded-2xl transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+
+  .btn-outline {
+    @apply border-2 border-[#6B7D3A] text-[#6B7D3A] hover:bg-[#6B7D3A] hover:text-white font-medium px-6 py-3 rounded-2xl transition-all duration-200;
+  }
+
+  .section-padding {
+    @apply px-5 py-16 md:px-10 lg:px-20;
+  }
+}
