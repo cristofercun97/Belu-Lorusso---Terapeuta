@@ -10,7 +10,7 @@ export default function CTASection() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <a
-            href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20reservar%20una%20sesi%C3%B3n"
+            href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20reservar%20una%20sesi%C3%B3n"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-[#6B7D3A] hover:bg-[#F5F1EB] font-medium px-8 py-3 rounded-2xl transition-all duration-200 shadow-md text-center"
@@ -18,7 +18,7 @@ export default function CTASection() {
             Reservar sesión
           </a>
           <a
-            href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quisiera%20consultarte%20algo"
+            href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quisiera%20consultarte%20algo"
             target="_blank"
             rel="noopener noreferrer"
             className="border-2 border-white text-white hover:bg-white hover:text-[#6B7D3A] font-medium px-8 py-3 rounded-2xl transition-all duration-200 text-center flex items-center justify-center gap-2"

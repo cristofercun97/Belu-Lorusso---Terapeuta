@@ -5,7 +5,6 @@ import ValueSection from "./components/ValueSection";
 import Services from "./components/Services";
 import TrustSection from "./components/TrustSection";
 import EmotionalSection from "./components/EmotionalSection";
-import FunnelTest from "./components/FunnelTest";
 import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
 import FAQSection from "./components/FAQSection";
@@ -23,7 +22,6 @@ function Home() {
         <Services />
         <TrustSection />
         <EmotionalSection />
-        <FunnelTest />
         <FAQSection />
         <ContactForm />
         <CTASection />

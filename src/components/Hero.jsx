@@ -21,12 +21,12 @@ export default function Hero() {
         </p>
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-white leading-tight">
-          Reconecta con tu cuerpo, libera tensión y vuelve a sentirte bien.
+          Al servicio del cuerpo, la presencia y el encuentro.
         </h1>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
           <a
-            href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20reservar%20una%20sesi%C3%B3n"
+            href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20reservar%20una%20sesi%C3%B3n"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary w-full sm:w-auto text-center text-base"

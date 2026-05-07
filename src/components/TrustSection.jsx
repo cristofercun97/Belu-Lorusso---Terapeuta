@@ -76,7 +76,7 @@ export default function TrustSection() {
             </div>
             <div className="flex gap-3">
               <a
-                href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s"
+                href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center btn-primary px-5 py-3"
@@ -87,7 +87,7 @@ export default function TrustSection() {
                 </svg>
               </a>
               <a
-                href="https://instagram.com/belulorusso"
+                href="https://www.instagram.com/belu.movimient.o"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center btn-outline px-5 py-3"
@@ -133,7 +133,7 @@ export default function TrustSection() {
             </div>
 
             <a
-              href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s"
+              href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary self-start mt-2"

@@ -12,11 +12,6 @@ const FAQS = [
       "Es un masaje consciente que combina técnicas corporales con atención emocional. Trabajamos sobre tensiones físicas y también sobre lo que el cuerpo guarda emocionalmente. La sesión dura aproximadamente 60-90 minutos en un espacio seguro y contenido.",
   },
   {
-    question: "¿En qué se diferencia el Acompañamiento Terapéutico de una psicoterapia?",
-    answer:
-      "El acompañamiento terapéutico es un proceso personalizado que integra herramientas corporales, de movimiento y de expresión. No reemplaza a la psicoterapia, sino que la complementa. Es ideal para personas que atraviesan procesos de cambio, crisis o búsqueda de sentido y quieren incorporar el cuerpo en su camino.",
-  },
-  {
     question: "¿Dónde se realizan las actividades?",
     answer:
       "Las clases regulares de Biodanza se dictan en Hogar Micelio (Valencia). Los talleres, retiros y sesiones individuales pueden realizarse en distintos espacios según la propuesta. Escribime para conocer la dirección exacta y los horarios actualizados.",
@@ -92,7 +87,7 @@ export default function FAQSection() {
 
         <div className="text-center">
           <a
-            href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20tengo%20una%20consulta"
+            href="https://wa.me/34633070753?text=Hola%20Belu%2C%20tengo%20una%20consulta"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary inline-flex items-center gap-2"

@@ -1,12 +1,126 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import imgMovimiento from "../assets/images/proyecto-movimiento.png";
 import imgTalleres from "../assets/images/talleres-de-salud-emocional.png";
 import imgBelu from "../assets/images/belulorusso.png";
 import imgLogo from "../assets/images/4.png";
-import imgAlma from "../assets/images/5.png";
-import imgGeppe from "../assets/images/6.png";
+
+function CTAForm() {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const e = {};
+    if (!form.name.trim()) e.name = "El nombre es obligatorio.";
+    if (!form.email.trim()) e.email = "El correo es obligatorio.";
+    if (!form.message.trim()) e.message = "Este campo es obligatorio.";
+    return e;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+    const text = encodeURIComponent(
+      `Hola Belu! Me interesa unirme a MovimienT.O.\n\n*Nombre:* ${form.name}\n*Email:* ${form.email}${form.phone ? `\n*Teléfono:* ${form.phone}` : ""}\n\n*Mensaje:*\n${form.message}`
+    );
+    window.open(`https://wa.me/34633070753?text=${text}`, "_blank");
+    setSent(true);
+  };
+
+  const handleChange = (field) => (e) => {
+    setForm((f) => ({ ...f, [field]: e.target.value }));
+    setErrors((err) => ({ ...err, [field]: undefined }));
+  };
+
+  if (sent) {
+    return (
+      <section className="bg-[#6B7D3A] px-5 py-16 md:px-10 lg:px-20">
+        <div className="max-w-xl mx-auto text-center flex flex-col gap-5 items-center">
+          <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-[#6B7D3A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 className="text-2xl font-serif text-white">¡Mensaje enviado!</h3>
+          <p className="text-white/80">Tu consulta fue enviada por WhatsApp. Belu te responderá a la brevedad.</p>
+          <button
+            onClick={() => { setSent(false); setForm({ name: "", email: "", phone: "", message: "" }); }}
+            className="bg-white text-[#6B7D3A] font-medium px-6 py-2 rounded-2xl text-sm hover:bg-[#F5F1EB] transition"
+          >
+            Enviar otro mensaje
+          </button>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="bg-[#6B7D3A] px-5 py-16 md:px-10 lg:px-20">
+      <div className="max-w-2xl mx-auto flex flex-col gap-8">
+        <div className="text-center flex flex-col gap-3">
+          <h2 className="text-3xl font-serif text-white">¿Te unes al MovimienT.O?</h2>
+          <p className="text-white/80">Escribime para conocer los próximos talleres, clases y propuestas formativas.</p>
+        </div>
+        <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="flex flex-col gap-1.5">
+              <label className="text-sm font-medium text-white">Nombre <span className="text-white/60">*</span></label>
+              <input
+                type="text"
+                value={form.name}
+                onChange={handleChange("name")}
+                placeholder="Tu nombre"
+                className={`bg-white/10 border rounded-2xl px-4 py-3 text-sm text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-white/50 transition ${errors.name ? "border-red-300" : "border-white/20"}`}
+              />
+              {errors.name && <p className="text-red-300 text-xs">{errors.name}</p>}
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-sm font-medium text-white">Email <span className="text-white/60">*</span></label>
+              <input
+                type="email"
+                value={form.email}
+                onChange={handleChange("email")}
+                placeholder="tu@email.com"
+                className={`bg-white/10 border rounded-2xl px-4 py-3 text-sm text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-white/50 transition ${errors.email ? "border-red-300" : "border-white/20"}`}
+              />
+              {errors.email && <p className="text-red-300 text-xs">{errors.email}</p>}
+            </div>
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-medium text-white">Teléfono <span className="text-white/40">(opcional)</span></label>
+            <input
+              type="tel"
+              value={form.phone}
+              onChange={handleChange("phone")}
+              placeholder="+34 600 000 000"
+              className="bg-white/10 border border-white/20 rounded-2xl px-4 py-3 text-sm text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-white/50 transition"
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-medium text-white">¿Qué te interesa? <span className="text-white/60">*</span></label>
+            <textarea
+              rows={4}
+              value={form.message}
+              onChange={handleChange("message")}
+              placeholder="Contame qué te lleva a querer unirte al MovimienT.O..."
+              className={`bg-white/10 border rounded-2xl px-4 py-3 text-sm text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-white/50 transition resize-none ${errors.message ? "border-red-300" : "border-white/20"}`}
+            />
+            {errors.message && <p className="text-red-300 text-xs">{errors.message}</p>}
+          </div>
+          <button
+            type="submit"
+            className="bg-white text-[#6B7D3A] hover:bg-[#F5F1EB] font-medium px-8 py-3 rounded-2xl transition-all duration-200 shadow-md self-center"
+          >
+            Quiero inscribirme
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
 
 export default function MovimientoPage() {
   useEffect(() => {
@@ -40,7 +154,7 @@ export default function MovimientoPage() {
                 modos de intervención en el campo de la salud.
               </p>
               <a
-                href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s%20sobre%20MovimienT.O"
+                href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s%20sobre%20MovimienT.O"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary self-start"
@@ -170,10 +284,7 @@ export default function MovimientoPage() {
                 interesadas en una visión humana e integradora de la salud.
               </p>
               <p className="text-[#6B6B6B] leading-relaxed">
-                Facilitan y exponen:{" "}
-                <strong className="text-[#1E1E1E]">
-                  Belu Lorusso, Alma Alvarado Rojas y Geppe Miglioranza.
-                </strong>
+                Soy yo quien lleva estas propuestas: desde mi formación como Terapeuta Ocupacional y Facilitadora de Biodanza, diseño cada taller con intención, cuerpo y corazón.
               </p>
               <div className="flex flex-col gap-3">
                 {[
@@ -209,81 +320,33 @@ export default function MovimientoPage() {
           <div className="max-w-4xl mx-auto flex flex-col gap-10">
             <div className="text-center flex flex-col gap-4">
               <img src={imgLogo} alt="MovimienT.O logo" className="w-32 h-32 object-contain mx-auto" />
-              <span className="text-xs font-medium tracking-widest text-[#6B7D3A] uppercase">Equipo</span>
-              <h2 className="text-3xl font-serif text-[#1E1E1E]">Facilitan y exponen</h2>
+              <span className="text-xs font-medium tracking-widest text-[#6B7D3A] uppercase">Quién soy</span>
+              <h2 className="text-3xl font-serif text-[#1E1E1E]">La persona detrás del proyecto</h2>
             </div>
-            <div className="flex flex-col gap-6">
-              {[
-                {
-                  img: imgBelu,
-                  initials: null,
-                  name: "Belu Lorusso",
-                  flags: "🇦🇷 🇪🇸",
-                  bio: "Licenciada en Terapia Ocupacional y Facilitadora de Biodanza. 10 años trabajando como Terapeuta y Biodanza en Salud Mental, en tercer edad y discapacidad.",
-                },
-                {
-                  img: imgAlma,
-                  initials: null,
-                  name: "Alma Alvarado Rojas",
-                  flags: "🇩🇪 🇲🇽",
-                  bio: "Profesora Didacta de Biodanza y Heilpraktikerin für Psychotherapie (Alemania). Más de 20 años de experiencia en salud, clínica y tercera edad.",
-                },
-                {
-                  img: imgGeppe,
-                  initials: null,
-                  name: "Geppe Miglioranza",
-                  flags: "🇮🇹",
-                  bio: "Facilitador y Didacta de Biodanza. Biodanza Clínica. Experiencia en Parkinson, Alzheimer, adicciones y trauma por abuso.",
-                },
-              ].map((person) => (
-                <div key={person.name} className="flex flex-col sm:flex-row items-center sm:items-start gap-5 bg-[#F5F1EB] rounded-3xl p-6 shadow-sm">
-                  <div className="flex-shrink-0">
-                    {person.img ? (
-                      <img
-                        src={person.img}
-                        alt={person.name}
-                        className="w-24 h-24 rounded-full object-cover object-top shadow-md border-4 border-white"
-                      />
-                    ) : (
-                      <div className="w-24 h-24 rounded-full bg-[#6B7D3A] flex items-center justify-center shadow-md border-4 border-white">
-                        <span className="text-white text-2xl font-serif font-semibold">{person.initials}</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex flex-col gap-1 text-center sm:text-left">
-                    <p className="font-serif text-xl text-[#1E1E1E] font-semibold">
-                      {person.name} <span className="text-base">{person.flags}</span>
-                    </p>
-                    <p className="text-[#6B6B6B] text-sm leading-relaxed">{person.bio}</p>
-                  </div>
+            <div className="flex justify-center">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 bg-[#F5F1EB] rounded-3xl p-8 shadow-sm max-w-2xl w-full">
+                <div className="flex-shrink-0">
+                  <img
+                    src={imgBelu}
+                    alt="Belu Lorusso"
+                    className="w-28 h-28 rounded-full object-cover object-top shadow-md border-4 border-white"
+                  />
                 </div>
-              ))}
+                <div className="flex flex-col gap-2 text-center sm:text-left">
+                  <p className="font-serif text-xl text-[#1E1E1E] font-semibold">
+                    Belu Lorusso <span className="text-base">🇦🇷 🇪🇸</span>
+                  </p>
+                  <p className="text-[#6B6B6B] text-sm leading-relaxed">
+                    Licenciada en Terapia Ocupacional y Facilitadora de Biodanza. 10 años trabajando como Terapeuta y Biodanza en Salud Mental, en tercer edad y discapacidad.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="bg-[#6B7D3A] px-5 py-16 md:px-10 lg:px-20">
-          <div className="max-w-2xl mx-auto flex flex-col items-center text-center gap-6">
-            <h2 className="text-3xl font-serif text-white">
-              ¿Te unes al MovimienT.O de la Salud Biocéntrica?
-            </h2>
-            <p className="text-white/80">
-              Escribime para conocer los próximos talleres, clases y propuestas formativas.
-            </p>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScvIDdSreH7KjOSfii_Ni7-9EiJvCLBH-08Oez4b99RInpUEg/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-[#6B7D3A] hover:bg-[#F5F1EB] font-medium px-8 py-3 rounded-2xl transition-all duration-200 shadow-md flex items-center gap-2"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12 12-5.373 12-12S18.628 0 12 0zm6.369 8.71h-2.628c-.31-1.227-.748-2.4-1.296-3.474 1.63.612 2.99 1.843 3.924 3.474zM12 2.182c.748 1.11 1.335 2.35 1.726 3.709H10.27c.392-1.359.98-2.598 1.73-3.71zm0 19.636c-.748-1.11-1.335-2.35-1.726-3.709h3.456c-.392 1.36-.98 2.6-1.73 3.71zm-2.101-5.891H7.263a9.816 9.816 0 01-.47-2.927c0-1.027.165-2.015.47-2.927H9.9a18.73 18.73 0 00-.173 2.927c0 .998.06 1.976.172 2.927zm.375 1.818h3.452c-.381 1.294-.944 2.49-1.726 3.564-.782-1.073-1.345-2.27-1.726-3.564zm3.452-9.455H9.274c.381-1.294.944-2.49 1.726-3.564.782 1.074 1.345 2.27 1.726 3.564zm1.737 1.818h2.638c.305.912.47 1.9.47 2.927 0 1.027-.165 2.015-.47 2.927H15.46a18.73 18.73 0 00.173-2.927 18.73 18.73 0 00-.172-2.927zm1.184-3.636c-.934-1.63-2.294-2.862-3.924-3.474.548 1.074.986 2.247 1.296 3.474h2.628zM7.555 5.236c-.548 1.074-.986 2.247-1.296 3.474H3.631c.934-1.63 2.294-2.862 3.924-3.474zM3.085 10.527h2.628c-.101.632-.158 1.278-.158 1.945 0 .667.057 1.313.158 1.945H3.085a9.844 9.844 0 01-.267-1.945c0-.667.09-1.313.267-1.945zm.546 5.709h2.628c.31 1.227.748 2.4 1.296 3.474-1.63-.613-2.99-1.844-3.924-3.474zm10.81 3.474c.548-1.074.986-2.247 1.296-3.474h2.628c-.934 1.63-2.294 2.861-3.924 3.474zm4.474-5.292h-2.638a18.51 18.51 0 00.158-1.945c0-.667-.057-1.313-.158-1.945h2.638c.177.632.267 1.278.267 1.945 0 .667-.09 1.313-.267 1.945z"/>
-              </svg>
-              Quiero inscribirme
-            </a>
-          </div>
-        </section>
+        {/* Formulario de inscripción */}
+        <CTAForm />
 
       </main>
       <Footer />

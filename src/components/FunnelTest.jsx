@@ -44,7 +44,7 @@ function getRecommendation(answers) {
       description:
         "Tu cuerpo necesita soltar. Un masaje consciente puede liberar tensiones profundas y devolverte la liviandad que extrañás.",
       cta: "Reservar mi masaje",
-      href: "https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20reservar%20un%20masaje",
+      href: "https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20reservar%20un%20masaje",
     };
   }
   if (answers.includes("vinculos") || answers.includes("vitalidad")) {
@@ -53,7 +53,7 @@ function getRecommendation(answers) {
       description:
         "El movimiento y la música son el camino para reconectar con tu vitalidad y con los demás. La Biodanza es para vos.",
       cta: "Conocer Biodanza",
-      href: "https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Biodanza",
+      href: "https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Biodanza",
     };
   }
   return {
@@ -61,7 +61,7 @@ function getRecommendation(answers) {
     description:
       "Un espacio personalizado para transitar lo que estás viviendo, integrar emociones y encontrar claridad.",
     cta: "Comenzar mi proceso",
-    href: "https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20consultar%20sobre%20acompa%C3%B1amiento",
+    href: "https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20consultar%20sobre%20acompa%C3%B1amiento",
   };
 }
 

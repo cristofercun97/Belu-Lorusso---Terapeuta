@@ -21,7 +21,7 @@ export default function ContactForm() {
     const text = encodeURIComponent(
       `Hola Belu! Te escribo desde tu web.\n\n*Nombre:* ${form.name}\n*Email:* ${form.email}\n*Teléfono:* ${form.phone}\n\n*Mensaje:*\n${form.message}`
     );
-    window.open(`https://wa.me/5491100000000?text=${text}`, "_blank");
+    window.open(`https://wa.me/34633070753?text=${text}`, "_blank");
     setSent(true);
   };
 

@@ -31,7 +31,7 @@ export default function BiodanzaPage() {
               La Biodanza me aporta coherencia, potencia vital, conexión con el placer de estar viva y coraje existencial para ser y hacer. Es una práctica que atraviesa mi vida y mi forma de acompañar a otrxs.
             </p>
             <a
-              href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Biodanza"
+              href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Biodanza"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary self-start mt-2"
@@ -129,7 +129,7 @@ export default function BiodanzaPage() {
           <h2 className="text-3xl font-serif text-white">¿Te suma explorar la Biodanza?</h2>
           <p className="text-white/80">Escribime y te cuento todo sobre las próximas clases y eventos.</p>
           <a
-            href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Biodanza"
+            href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Biodanza"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-[#6B7D3A] hover:bg-[#F5F1EB] font-medium px-8 py-3 rounded-2xl transition-all duration-200 shadow-md flex items-center gap-2"

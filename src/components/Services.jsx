@@ -2,7 +2,6 @@ import { useState } from "react";
 import ServiceCard from "./ServiceCard";
 import imgBiodanza from "../assets/images/biodanza.png";
 import imgMasaje from "../assets/images/masajeintegral.png";
-import imgAcompanamiento from "../assets/images/acompañamiento-terapeutico.png";
 import imgMovimiento from "../assets/images/proyecto-movimiento.png";
 import imgTalleres from "../assets/images/talleres-de-salud-emocional.png";
 import imgMicelio from "../assets/images/hogar-micelio.png";
@@ -36,21 +35,7 @@ const SERVICES = [
     ctaLabel: "Reservar masaje",
     ctaPrimary: true,
     ctaHref:
-      "https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20reservar%20un%20masaje",
-  },
-  {
-    image: imgAcompanamiento,
-    title: "Acompañamiento terapéutico",
-    description:
-      "Un proceso personalizado para transitar crisis, cambios o búsqueda de sentido con apoyo profesional.",
-    benefits: [
-      "Proceso personalizado y a tu ritmo",
-      "Integración de herramientas corporales",
-      "Apoyo en momentos de transición",
-    ],
-    ctaLabel: "Conocer más",
-    ctaPrimary: false,
-    ctaHref: "#contacto",
+      "https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20reservar%20un%20masaje",
   },
   {
     image: imgMovimiento,

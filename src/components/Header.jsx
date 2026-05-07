@@ -58,7 +58,7 @@ export default function Header() {
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-4">
             <a
-              href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20reservar%20una%20sesi%C3%B3n"
+              href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20reservar%20una%20sesi%C3%B3n"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex btn-primary text-sm"
@@ -131,7 +131,7 @@ export default function Header() {
           {/* CTA */}
           <div className="px-6 pb-8 pt-4 flex flex-col gap-3">
             <a
-              href="https://wa.me/5491100000000?text=Hola%20Belu%2C%20quiero%20reservar%20una%20sesi%C3%B3n"
+              href="https://wa.me/34633070753?text=Hola%20Belu%2C%20quiero%20reservar%20una%20sesi%C3%B3n"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-center text-sm flex items-center justify-center gap-2"
