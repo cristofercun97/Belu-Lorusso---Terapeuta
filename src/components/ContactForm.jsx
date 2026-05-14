@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxFlWX67wkWtYlO4rnsLwot3NiSVAlRnA3vDkMzsgjaoNGTfFMl0v_hoXorLxThqhDJTg/exec";
+
 export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sent, setSent] = useState(false);
@@ -14,15 +16,30 @@ export default function ContactForm() {
     return e;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
-    const text = encodeURIComponent(
-      `Hola Belu! Te escribo desde tu web.\n\n*Nombre:* ${form.name}\n*Email:* ${form.email}\n*Teléfono:* ${form.phone}\n\n*Mensaje:*\n${form.message}`
-    );
-    window.open(`https://wa.me/34633070753?text=${text}`, "_blank");
-    setSent(true);
+
+    const data = {
+      nombre: form.name,
+      email: form.email,
+      telefono: form.phone,
+      mensaje: form.message,
+    };
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(data),
+      });
+      setSent(true);
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error("Error enviando formulario:", error);
+      alert("Hubo un error al enviar el formulario. Inténtalo de nuevo.");
+    }
   };
 
   const handleChange = (field) => (e) => {
@@ -40,7 +57,7 @@ export default function ContactForm() {
             </svg>
           </div>
           <h3 className="text-2xl font-serif text-[#1E1E1E]">¡Mensaje enviado!</h3>
-          <p className="text-[#6B6B6B]">Tu consulta fue enviada por WhatsApp. Belu te responderá a la brevedad.</p>
+          <p className="text-[#6B6B6B]">Tu consulta fue recibida. Belu te responderá a la brevedad.</p>
           <button
             onClick={() => { setSent(false); setForm({ name: "", email: "", phone: "", message: "" }); }}
             className="btn-outline text-sm"
@@ -69,6 +86,7 @@ export default function ContactForm() {
             </label>
             <input
               type="text"
+              name="nombre"
               value={form.name}
               onChange={handleChange("name")}
               placeholder="Tu nombre"
@@ -84,6 +102,7 @@ export default function ContactForm() {
             </label>
             <input
               type="email"
+              name="email"
               value={form.email}
               onChange={handleChange("email")}
               placeholder="tu@correo.com"
@@ -99,6 +118,7 @@ export default function ContactForm() {
             </label>
             <input
               type="tel"
+              name="telefono"
               value={form.phone}
               onChange={handleChange("phone")}
               placeholder="+54 9 ..."
@@ -115,6 +135,7 @@ export default function ContactForm() {
             </label>
             <textarea
               rows={4}
+              name="mensaje"
               value={form.message}
               onChange={handleChange("message")}
               placeholder="Escribí tu mensaje..."
